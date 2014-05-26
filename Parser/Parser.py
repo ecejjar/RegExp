@@ -27,8 +27,8 @@ class Automata(set):
                 c.id_generator = 0
             return c.id_generator
             
-        def __init__ ( self, id = None ):
-            self.__id = id or self.nextId()
+        def __init__ ( self, stid = None ):
+            self.__id = stid or self.nextId()
             self.__accepting = False
             self.__transitions = {}
 
@@ -264,7 +264,7 @@ class Parser(object):
             #elif len(self.__operatorStack) == 0:   I think this is not needed
             #    self.pushOp(token)
             elif self.entersNest(token):
-                 self.push(token)
+                self.push(token)
             elif self.leavesNest(token):
                 while not self.entersNest(self.__operatorStack[-1]):
                     visitor.visit(self)
